@@ -30,13 +30,7 @@ function createMarkupForImages(galleryItems) {
 
 container.addEventListener('click', onClick);
 window.addEventListener('keydown', onKeyPress);
-
-// const originalUrl = galleryItems.map(item => item.original);
-// console.log(originalUrl.join(''));
-// for (const url of originalUrl) {
-//   const instance = basicLightbox.create(`<img src="${url}">`);
-// }
-// const instance = basicLightbox.create(`<img src="${}">`);
+let instance;
 
 function onClick(evt) {
   evt.preventDefault();
@@ -44,7 +38,7 @@ function onClick(evt) {
     return;
   }
 
-  const instance = basicLightbox.create(`<img src="${evt.target.dataset.source}">`);
+  instance = basicLightbox.create(`<img src="${evt.target.dataset.source}">`);
   instance.show();
 }
 
