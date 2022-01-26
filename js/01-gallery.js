@@ -29,21 +29,25 @@ function createMarkupForImages(galleryItems) {
 // 2. Реализация делегирования на div.gallery и получение url большого изображения.
 
 container.addEventListener('click', onClick);
-window.addEventListener('keydown', onKeyPress);
 let instance;
 
 function onClick(evt) {
   evt.preventDefault();
+
   if (evt.target.nodeName !== 'IMG') {
     return;
   }
 
   instance = basicLightbox.create(`<img src="${evt.target.dataset.source}">`);
+
   instance.show();
+  window.addEventListener('keydown', onKeyPress);
 }
 
 function onKeyPress(e) {
-  if (e.key === 'Escape') {
+  console.log(e);
+  if (e.code === 'Escape') {
     instance.close();
+    window.removeEventListener('keydown', onKeyPress);
   }
 }
